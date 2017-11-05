@@ -1,11 +1,17 @@
 package com.ajit123jain.employee.api;
 
+import com.google.gson.JsonObject;
+
+import java.util.Map;
+
+import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 /**
  * Created by ajit on 4/11/17.
@@ -13,17 +19,19 @@ import retrofit2.http.Query;
 
 interface APIInterface {
 
-   /* @GET("/api/unknown")
-    Call<MultipleResource> doGetListResources();
+    @POST("/EmployeeApi/v1/Api.php?apicall=createemployee")
+    Call<JsonObject> createEmployee(@QueryMap Map<String, String> options);
 
-    @POST("/api/users")
-    Call<User> createUser(@Body User user);
+    @POST("/EmployeeApi/v1/Api.php?apicall=updateemployee")
+    Call<JsonObject> updateEmployee(@QueryMap Map<String, String> options);
 
-    @GET("/api/users?")
-    Call<UserList> doGetUserList(@Query("page") String page);
+    @GET("/EmployeeApi/v1/Api.php?apicall=getemployee")
+    Call<JsonObject> getEmployee();
 
-    @FormUrlEncoded
-    @POST("/api/users?")
-    Call<UserList> doCreateUserWithField(@Field("name") String name, @Field("job") String job); */
+    @GET("/EmployeeApi/v1/Api.php?apicall=searhemployee")
+    Call<JsonObject> searchEmployee();
+
+    @GET("/EmployeeApi/v1/Api.php?apicall=deleteemployee")
+    Call<JsonObject> deleteEmployee(@Field("prefix") String prefix) ;
 
 }
